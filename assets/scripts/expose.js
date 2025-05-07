@@ -37,6 +37,23 @@ function init() {
   });
   
   // implementing the sound based on the changes in the volume and the horns
+  const playButton = document.querySelector('button');
+  playButton.addEventListener('click', (event) => {
+    const audio = document.querySelector('audio');
+    const hornSelected = document.getElementById('horn-select');
+    const hornValue = hornSelected.value;
+    audio.src = `assets/audio/${hornValue}.mp3`;
+    if (hornValue==='party-horn') {
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti({
+        confettiColors: [
+          '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
+        ],
+      });
+    }
+    audio.play();
 
+
+  });
 
 }
