@@ -17,10 +17,11 @@ function init() {
 
   // implementing the change in icon for the different volumns
   const volumeRange = document.getElementById('volume');
+  const volumeIcon = document.querySelector('#volume-controls img');
+  const audio = document.querySelector('audio');
   volumeRange.addEventListener('input', (event) => {
     const volumeValue = event.target.value;
-    const volumeIcon = document.querySelector('#volume-controls img');
-    const audio = document.querySelector('audio');
+    
     audio.volume = volumeValue / 100;
     if (volumeValue == 0) {
       volumeIcon.src = 'assets/icons/volume-level-0.svg';
@@ -39,9 +40,7 @@ function init() {
   // implementing the sound based on the changes in the volume and the horns
   const playButton = document.querySelector('button');
   playButton.addEventListener('click', (event) => {
-    const audio = document.querySelector('audio');
-    const hornSelected = document.getElementById('horn-select');
-    const hornValue = hornSelected.value;
+    const hornValue = hornSelect.value;
     audio.src = `assets/audio/${hornValue}.mp3`;
     if (hornValue==='party-horn') {
       const jsConfetti = new JSConfetti();
@@ -52,8 +51,6 @@ function init() {
       });
     }
     audio.play();
-
-
   });
 
 }
